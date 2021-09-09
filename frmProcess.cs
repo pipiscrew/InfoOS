@@ -10,17 +10,6 @@ namespace InfoOS
         public frmProcess()
         {
             InitializeComponent();
-
-            var h = Process.GetProcesses().GroupBy(x => x.ProcessName).Select(g => g.First()).Select(t => new
-            {
-                name = t.ProcessName,
-                total = (from p in Process.GetProcesses()
-                         where p.ProcessName.Equals(t.ProcessName)
-                         select p.PrivateMemorySize64).Count(),
-                totalSize = General.FormatBytes((from p in Process.GetProcesses()
-                                                 where p.ProcessName.Equals(t.ProcessName)
-                                                 select p.PrivateMemorySize64).Sum())
-            });
         }
 
         private void button1_Click(object sender, EventArgs e)
