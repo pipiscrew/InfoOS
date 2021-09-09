@@ -91,6 +91,11 @@ namespace InfoOS
             {
                 ScanFolder(userStartup);
             }
+
+            if (Directory.Exists(alluserStartup))
+            {
+                ScanFolder(alluserStartup);
+            }           
         }
 
         internal void ScanFolder(string path)
