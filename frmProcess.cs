@@ -19,16 +19,27 @@ namespace InfoOS
 
             Cursor = System.Windows.Forms.Cursors.WaitCursor;
 
-            var h = Process.GetProcesses().GroupBy(x => x.ProcessName).Select(g => g.First()).Select(t => new
-            {
-                name = t.ProcessName,
-                total = (from p in Process.GetProcesses()
-                         where p.ProcessName.Equals(t.ProcessName)
-                         select p.PrivateMemorySize64).Count(),
-                totalSize = (from p in Process.GetProcesses()
-                             where p.ProcessName.Equals(t.ProcessName)
-                             select p.PrivateMemorySize64).Sum()
-            }).OrderByDescending(x => x.totalSize);
+            var h = (from p in Process.GetProcesses()
+                    group p by p.ProcessName into grp
+                    select new
+                    {
+                        name = grp.Key,
+                        total = grp.Count(),
+                        totalSize = (from p in Process.GetProcesses()
+                                     where p.ProcessName.Equals(grp.Key)
+                                     select p.PrivateMemorySize64).Sum()
+                    }).OrderByDescending(x => x.totalSize);
+
+            //var h = Process.GetProcesses().GroupBy(x => x.ProcessName).Select(g => g.First()).Select(t => new
+            //{
+            //    name = t.ProcessName,
+            //    total = (from p in Process.GetProcesses()
+            //             where p.ProcessName.Equals(t.ProcessName)
+            //             select p.PrivateMemorySize64).Count(),
+            //    totalSize = (from p in Process.GetProcesses()
+            //                 where p.ProcessName.Equals(t.ProcessName)
+            //                 select p.PrivateMemorySize64).Sum()
+            //}).OrderByDescending(x => x.totalSize);
 
             long totalMem = 0;
             int total = 0;
