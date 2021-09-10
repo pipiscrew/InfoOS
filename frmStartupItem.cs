@@ -10,15 +10,9 @@ namespace InfoOS
 {
     public partial class frmStartupItem : Form
     {
-        string userStartup;
-        string alluserStartup;
-
         public frmStartupItem()
         {
             InitializeComponent();
-
-            userStartup = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\";
-            alluserStartup = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartup) + "\\";
 
             ScanRegistryLocations();
             ScanStartUpFolders();
@@ -87,19 +81,18 @@ namespace InfoOS
 
         internal void ScanStartUpFolders()
         {
-            if (Directory.Exists(userStartup))
-            {
-                ScanFolder(userStartup);
-            }
+            string userStartup = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\";
+            string alluserStartup = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartup) + "\\";
 
-            if (Directory.Exists(alluserStartup))
-            {
-                ScanFolder(alluserStartup);
-            }           
+            ScanFolder(userStartup);
+            ScanFolder(alluserStartup);
         }
 
         internal void ScanFolder(string path)
         {
+            if (!Directory.Exists(path))
+                return;
+
             var files = Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories);
 
             foreach (var item in files)
