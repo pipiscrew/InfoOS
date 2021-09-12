@@ -64,13 +64,17 @@ namespace InfoOS
                             install = subKey.GetValue("Install", "").ToString();
                             if (!string.IsNullOrEmpty(install))
                             {
+                                string release = subKey.GetValue("Release", "").ToString();
+                                if (release.Length > 0)
+                                    release = "rel" + release;
+
                                 if (!(string.IsNullOrEmpty(sp)) && install == "1")
                                 {
-                                    AddItem(name + string.Format(" ({0})", subKeyName), sp);
+                                    AddItem(name + string.Format(" ({0}) rel{1}", subKeyName, release), sp);
                                 }
                                 else if (install == "1")
                                 {
-                                    AddItem(name + string.Format(" ({0})", subKeyName));
+                                    AddItem(name + string.Format(" ({0}) {1}", subKeyName, release));
                                 }
                             }
                         }
