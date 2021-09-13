@@ -16,6 +16,7 @@ namespace InfoOS
             addform2tabpage(new frmProcess(), tabProcesses);
             addform2tabpage(new frmFolderSize(), tabFolderSizes);
             addform2tabpage(new frmFramework(), tabFrameworks);
+            addform2tabpage(new frmTasks(), tabTasks);
         }
 
         internal void addform2tabpage(Form frm, TabPage tab)

@@ -33,6 +33,7 @@
             this.tabProcesses = new System.Windows.Forms.TabPage();
             this.tabFolderSizes = new System.Windows.Forms.TabPage();
             this.tabFrameworks = new System.Windows.Forms.TabPage();
+            this.tabTasks = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,6 +43,7 @@
             this.tabControl1.Controls.Add(this.tabProcesses);
             this.tabControl1.Controls.Add(this.tabFolderSizes);
             this.tabControl1.Controls.Add(this.tabFrameworks);
+            this.tabControl1.Controls.Add(this.tabTasks);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -87,6 +89,15 @@
             this.tabFrameworks.Text = "Frameworks";
             this.tabFrameworks.UseVisualStyleBackColor = true;
             // 
+            // tabTasks
+            // 
+            this.tabTasks.Location = new System.Drawing.Point(4, 24);
+            this.tabTasks.Name = "tabTasks";
+            this.tabTasks.Size = new System.Drawing.Size(888, 466);
+            this.tabTasks.TabIndex = 4;
+            this.tabTasks.Text = "Tasks";
+            this.tabTasks.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -109,5 +120,6 @@
         private System.Windows.Forms.TabPage tabProcesses;
         private System.Windows.Forms.TabPage tabFolderSizes;
         private System.Windows.Forms.TabPage tabFrameworks;
+        private System.Windows.Forms.TabPage tabTasks;
     }
 }

@@ -78,6 +78,12 @@
     <Compile Include="frmFolderSize.Designer.cs">
       <DependentUpon>frmFolderSize.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTasks.designer.cs">
+      <DependentUpon>frmTasks.cs</DependentUpon>
+    </Compile>
     <Compile Include="General.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFolderSize.resx">
       <DependentUpon>frmFolderSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTasks.resx">
+      <DependentUpon>frmTasks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
