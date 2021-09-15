@@ -81,6 +81,44 @@ namespace InfoOS
                     }
                 }
             }
+
+            /*  refs :
+                https://www.reddit.com/r/TronScript/comments/9fufo7/suggestion_to_executequeueditems_for_net/
+                https://appuals.com/fix-high-cpu-usage-by-net-runtime-optimization-service/
+                https://kb.vmware.com/s/article/2069188
+                explained - https://www.pipiscrew.com/2021/09/net-runtime-optimization-service-to-improve-performance/
+            */
+
+            int x86=0, x64 = 0;
+            using (RegistryKey ndpKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\.NETFramework\NGenQueue\WIN32\Default\"))
+            {
+                if (ndpKey != null)
+                    x86 = ndpKey.GetSubKeyNames().Count();
+            }
+            using (RegistryKey ndpKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\.NETFramework\NGenQueue\WIN64\Default\"))
+            {
+                if (ndpKey!=null)
+                    x64 = ndpKey.GetSubKeyNames().Count();
+            }
+
+            string info = ".NET Runtime Optimization Service needed to run for :\r\n\r\n";
+            if (x86 > 0)
+            {
+                info += string.Format(@"x86 ({0} items waiting)
+cd /d C:\Windows\Microsoft.NET\Framework\v4.0.30319
+ngen.exe executeQueuedItems
+
+", x86);
+            }
+            if (x64 > 0)
+            {
+                info += string.Format(@"x64 ({0} items waiting)
+cd /d C:\Windows\Microsoft.NET\Framework64\v4.0.30319
+ngen.exe executeQueuedItems", x64);
+            }
+
+            if (x86 > 0 || x64 > 0)
+                MessageBox.Show(info, Application.ProductName, MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
 
@@ -101,7 +139,7 @@ namespace InfoOS
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
-                 ctx.Show(System.Windows.Forms.Cursor.Position);
+                ctx.Show(System.Windows.Forms.Cursor.Position);
             }
         }
 
