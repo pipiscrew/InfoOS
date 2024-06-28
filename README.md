@@ -8,6 +8,8 @@ a small application displays :
 
 &nbsp;
 
+find .net versions installed - https://github.com/jmalarcon/DotNetVersions  
+
 ## This project is no longer maintained  
 
 Copyright (c) 2021 [PipisCrew](https://pipiscrew.com)
