@@ -8,7 +8,8 @@ a small application displays :
 
 &nbsp;
 
-find .net versions installed - https://github.com/jmalarcon/DotNetVersions  
+* find .net versions installed - https://github.com/jmalarcon/DotNetVersions  
+* [High CPU Usage by .NET Runtime Optimization Service](https://www.pipiscrew.com/threads/14559)
 
 ## This project is no longer maintained  
 
